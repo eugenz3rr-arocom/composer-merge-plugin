@@ -151,12 +151,12 @@ class MergePlugin implements PluginInterface, EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        if (defined('InstallerEvents::PRE_OPERATIONS_EXEC')) {
-            // composer-plugin-api ^2.0
-            $installerStartEvent = InstallerEvents::PRE_OPERATIONS_EXEC;
+        if (defined('Composer\Installer\InstallerEvents::PRE_OPERATIONS_EXEC')) {
+          // composer-plugin-api ^2.0
+          $installerStartEvent = InstallerEvents::PRE_OPERATIONS_EXEC;
         } else {
-            // composer-plugin-api ^1.0
-            $installerStartEvent = InstallerEvents::PRE_DEPENDENCIES_SOLVING;
+          // composer-plugin-api ^1.0
+          $installerStartEvent = InstallerEvents::PRE_DEPENDENCIES_SOLVING;
         }
         return array(
             PluginEvents::INIT =>
@@ -299,12 +299,12 @@ class MergePlugin implements PluginInterface, EventSubscriberInterface
      */
     public function onDependencySolve(InstallerEvent $event)
     {
-        $request = $event->getRequest();
+        //$request = $event->getRequest();
         foreach ($this->state->getDuplicateLinks('require') as $link) {
             $this->logger->info(
                 "Adding dependency <comment>{$link}</comment>"
             );
-            $request->install($link->getTarget(), $link->getConstraint());
+            //$request->install($link->getTarget(), $link->getConstraint());
         }
 
         // Issue #113: Check devMode of event rather than our global state.
@@ -316,7 +316,7 @@ class MergePlugin implements PluginInterface, EventSubscriberInterface
                 $this->logger->info(
                     "Adding dev dependency <comment>{$link}</comment>"
                 );
-                $request->install($link->getTarget(), $link->getConstraint());
+                //$request->install($link->getTarget(), $link->getConstraint());
             }
         }
     }
