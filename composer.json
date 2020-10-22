@@ -1,5 +1,5 @@
 {
-    "name": "wikimedia/composer-merge-plugin",
+    "name": "eugenz3rr-arocom/composer-merge-plugin",
     "description": "Composer plugin to merge multiple composer.json files",
     "type": "composer-plugin",
     "license": "MIT",
@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "composer-plugin-api": "^1.1",
+        "composer-plugin-api": "^1.1||^2.0",
         "php": ">=7.2.0"
     },
     "require-dev": {
